@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terroirs Croisés – Restaurant Gastronomique Québécois</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ═══════════ PRELOADER ═══════════ -->
+<div id="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-logo">TC</div>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+
+<!-- ═══════════ CART OVERLAY ═══════════ -->
+<div id="cart-overlay" class="cart-overlay"></div>
+<aside id="cart-sidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <h3 data-fr="Votre Panier" data-en="Your Cart">Votre Panier</h3>
+    <button id="close-cart"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="cart-items" class="cart-items">
+    <p class="cart-empty" data-fr="Votre panier est vide." data-en="Your cart is empty.">Votre panier est vide.</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span data-fr="Total :" data-en="Total:">Total :</span>
+      <span id="cart-total-price">0,00 $</span>
+    </div>
+    <button class="btn-gold cart-checkout" data-fr="Commander" data-en="Checkout">Commander</button>
+  </div>
+</aside>
+
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<header id="navbar">
+  <nav class="nav-container">
+    <a href="#accueil" class="nav-logo">
+      <span class="logo-tc">TC</span>
+      <span class="logo-name">Terroirs<br><em>Croisés</em></span>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#accueil" data-fr="Accueil" data-en="Home">Accueil</a></li>
+
+      <li class="has-dropdown">
+        <a href="#apropos" data-fr="Entreprise" data-en="Company">Entreprise <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="#apropos" data-fr="À propos de nous" data-en="About Us">À propos de nous</a></li>
+          <li><a href="#partenaires" data-fr="Nos partenaires" data-en="Our Partners">Nos partenaires</a></li>
+          <li><a href="#importation" data-fr="Importation" data-en="Importation">Importation</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#boutique" data-fr="Nos produits" data-en="Our Products">Nos produits <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="#nouveautes" data-fr="Nouveautés" data-en="New Arrivals">Nouveautés</a></li>
+          <li><a href="#boutique" data-fr="Boutique en ligne" data-en="Online Store">Boutique en ligne</a></li>
+          <li><a href="#points-vente" data-fr="Points de vente" data-en="Points of Sale">Points de vente</a></li>
+          <li><a href="#services" data-fr="Services offerts" data-en="Services Offered">Services offerts</a></li>
+          <li><a href="#garantie" data-fr="Garantie" data-en="Warranty">Garantie</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#equipe" data-fr="Notre équipe" data-en="Our Team">Notre équipe</a></li>
+      <li><a href="#contact" data-fr="Nous joindre" data-en="Contact Us">Nous joindre</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="lang-btn" id="lang-toggle" aria-label="Toggle language">
+        <span id="lang-label">EN</span>
+      </button>
+      <button class="cart-btn" id="cart-btn" aria-label="Panier">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ═══════════ HERO / ACCUEIL ═══════════ -->
+<section id="accueil" class="hero">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow animate-fade-up" data-fr="Restaurant Gastronomique" data-en="Gastronomic Restaurant">Restaurant Gastronomique</p>
+    <h1 class="hero-title animate-fade-up delay-1">
+      <span>Terroirs</span>
+      <em>Croisés</em>
+    </h1>
+    <p class="hero-slogan animate-fade-up delay-2" data-fr="Où le Québec rencontre le monde" data-en="Where Quebec meets the world">Où le Québec rencontre le monde</p>
+    <div class="hero-buttons animate-fade-up delay-3">
+      <a href="#boutique" class="btn-gold" data-fr="Acheter" data-en="Shop Now">Acheter</a>
+      <a href="#apropos" class="btn-outline" data-fr="Découvrir" data-en="Discover">Découvrir</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint animate-fade-up delay-4">
+    <span></span>
+  </div>
+  <div class="social-float">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ BANDE CITATION ═══════════ -->
+<div class="quote-band reveal">
+  <p data-fr="«&nbsp;Chaque assiette raconte l'histoire de notre terroir et du monde&nbsp;»" data-en="«&nbsp;Every plate tells the story of our land and the world&nbsp;»">«&nbsp;Chaque assiette raconte l'histoire de notre terroir et du monde&nbsp;»</p>
+</div>
+
+<!-- ═══════════ À PROPOS DE NOUS ═══════════ -->
+<section id="apropos" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-media reveal-left">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Intérieur du restaurant Terroirs Croisés" loading="lazy" />
+      <div class="img-badge" data-fr="Depuis 2026" data-en="Since 2026">Depuis 2026</div>
+    </div>
+    <div class="section-text reveal-right">
+      <p class="section-label" data-fr="Entreprise / À propos" data-en="Company / About">Entreprise / À propos</p>
+      <h2 data-fr="À propos de nous" data-en="About Us">À propos de nous</h2>
+      <p data-fr="Terroirs Croisés est un restaurant québécois situé au cœur de Sherbrooke, au 219 rue Queen. Notre concept repose sur la rencontre entre les saveurs authentiques du Québec et des ingrédients soigneusement importés du monde entier. En plus de notre salle à manger, notre espace boutique vous permet de repartir avec les produits phares qui ont sublimé votre repas." data-en="Terroirs Croisés is a Quebec restaurant located in the heart of Sherbrooke, at 219 Queen Street. Our concept is built on the meeting of authentic Quebec flavors and carefully imported ingredients from around the world. In addition to our dining room, our boutique space lets you take home the signature products that elevated your meal.">
+        Terroirs Croisés est un restaurant québécois situé au cœur de Sherbrooke, au 219 rue Queen. Notre concept repose sur la rencontre entre les saveurs authentiques du Québec et des ingrédients soigneusement importés du monde entier. En plus de notre salle à manger, notre espace boutique vous permet de repartir avec les produits phares qui ont sublimé votre repas.
+      </p>
+
+      <div class="vmv-grid">
+        <div class="vmv-item">
+          <i class="fas fa-eye"></i>
+          <div>
+            <h4 data-fr="Vision" data-en="Vision">Vision</h4>
+            <p data-fr="Devenir une référence au Québec dans la distribution de produits locaux et importés de qualité, en créant un pont durable entre les producteurs d'ici et ceux d'ailleurs." data-en="Become a Quebec reference in the distribution of quality local and imported products, building a lasting bridge between local and international producers.">Devenir une référence au Québec dans la distribution de produits locaux et importés de qualité, en créant un pont durable entre les producteurs d'ici et ceux d'ailleurs.</p>
+          </div>
+        </div>
+        <div class="vmv-item">
+          <i class="fas fa-bullseye"></i>
+          <div>
+            <h4 data-fr="Mission" data-en="Mission">Mission</h4>
+            <p data-fr="Offrir une cuisine québécoise authentique tout en intégrant des saveurs internationales. Valoriser les produits locaux et sélectionner des ingrédients importés de qualité afin d'offrir une expérience culinaire unique et ouverte sur le monde." data-en="Offer authentic Quebec cuisine while integrating international flavors. Promote local products and select quality imported ingredients to provide a unique culinary experience open to the world.">Offrir une cuisine québécoise authentique tout en intégrant des saveurs internationales. Valoriser les produits locaux et sélectionner des ingrédients importés de qualité afin d'offrir une expérience culinaire unique et ouverte sur le monde.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:2rem;" data-fr="Nos valeurs fondamentales" data-en="Our Core Values">Nos valeurs fondamentales</h3>
+      <div class="values-grid">
+        <div class="value-card">
+          <i class="fas fa-leaf"></i>
+          <h4 data-fr="Authenticité" data-en="Authenticity">Authenticité</h4>
+          <p data-fr="Chaque produit respecte l'histoire et la tradition du terroir d'où il provient." data-en="Each product respects the history and tradition of its terroir.">Chaque produit respecte l'histoire et la tradition du terroir d'où il provient.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-star"></i>
+          <h4 data-fr="Qualité" data-en="Quality">Qualité</h4>
+          <p data-fr="Des produits soigneusement sélectionnés selon des critères stricts de fraîcheur et de certification." data-en="Products carefully selected according to strict standards of freshness and certification.">Des produits soigneusement sélectionnés selon des critères stricts de fraîcheur et de certification.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-seedling"></i>
+          <h4 data-fr="Éthique et durabilité" data-en="Ethics & Sustainability">Éthique et durabilité</h4>
+          <p data-fr="Des partenaires responsables, des pratiques équitables et des produits respectueux de l'environnement." data-en="Responsible partners, fair practices and environmentally friendly products.">Des partenaires responsables, des pratiques équitables et des produits respectueux de l'environnement.</p>
+        </div>
+        <div class="value-card">
+          <i class="fas fa-globe-americas"></i>
+          <h4 data-fr="Ouverture sur le monde" data-en="Global Openness">Ouverture sur le monde</h4>
+          <p data-fr="Nous croyons à la richesse des échanges internationaux et au rapprochement des cultures." data-en="We believe in the richness of international exchanges and the bridging of cultures.">Nous croyons à la richesse des échanges internationaux et au rapprochement des cultures.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ NOS PARTENAIRES ═══════════ -->
+<section id="partenaires" class="section section-light">
+  <div class="section-center reveal">
+    <p class="section-label" data-fr="Entreprise / Partenaires" data-en="Company / Partners">Entreprise / Partenaires</p>
+    <h2 data-fr="Nos Partenaires" data-en="Our Partners">Nos Partenaires</h2>
+    <p class="section-intro" data-fr="Nous travaillons avec des fournisseurs d'exception, sélectionnés pour leur engagement envers la qualité et le savoir-faire artisanal, tant au Québec qu'à l'international." data-en="We work with exceptional suppliers, selected for their commitment to quality and artisanal craftsmanship, both in Quebec and internationally.">
+      Nous travaillons avec des fournisseurs d'exception, sélectionnés pour leur engagement envers la qualité et le savoir-faire artisanal, tant au Québec qu'à l'international.
+    </p>
+  </div>
+
+  <div class="partners-grid section-inner">
+    <!-- Fournisseur canadien -->
+    <div class="partner-card reveal-left">
+      <div class="partner-image">
+        <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fromagerie du Presbytère – Fournisseur canadien" loading="lazy" />
+        <span class="partner-badge" data-fr="🍁 Canadien" data-en="🍁 Canadian">🍁 Canadien</span>
+      </div>
+      <div class="partner-info">
+        <h3>Fromagerie du Presbytère</h3>
+        <p data-fr="Notre partenaire québécois d'excellence, la Fromagerie du Presbytère est une fromagerie artisanale réputée établie à Sainte-Élizabeth-de-Warwick, Québec. Elle nous fournit le fromage en grains frais utilisé dans notre poutine traditionnelle, garantissant une qualité irréprochable et un goût authentiquement québécois." data-en="Our Quebec partner of excellence, Fromagerie du Presbytère is a renowned artisanal cheese dairy established in Sainte-Élizabeth-de-Warwick, Quebec. They supply us with the fresh cheese curds used in our traditional poutine, guaranteeing impeccable quality and an authentically Quebec taste.">
+          Notre partenaire québécois d'excellence, la Fromagerie du Presbytère est une fromagerie artisanale réputée établie à Sainte-Élizabeth-de-Warwick, Québec. Elle nous fournit le fromage en grains frais utilisé dans notre poutine traditionnelle, garantissant une qualité irréprochable et un goût authentiquement québécois.
+        </p>
+        <a href="https://www.fromageriedupresbytere.com" target="_blank" rel="noopener" class="btn-outline-sm">
+          <i class="fas fa-external-link-alt"></i> <span data-fr="Visiter le site" data-en="Visit Website">Visiter le site</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Fournisseur étranger -->
+    <div class="partner-card reveal-right">
+      <div class="partner-image">
+        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Acetaia Giusti – Fournisseur italien" loading="lazy" />
+        <span class="partner-badge badge-gold" data-fr="🇮🇹 Étranger" data-en="🇮🇹 International">🇮🇹 Étranger</span>
+      </div>
+      <div class="partner-info">
+        <h3>Acetaia Giusti SRL</h3>
+        <p data-fr="Fondée en 1605 à Modène, en Émilie-Romagne (Italie), Acetaia Giusti est l'une des plus anciennes et prestigieuses maisons de vinaigre balsamique au monde. Leur vinaigre balsamique IGP, élaboré selon des méthodes traditionnelles séculaires, apporte à nos plats une complexité aromatique incomparable. Adresse : Strada de Ile Quattro Ville 155, 41123 Modena, Italie." data-en="Founded in 1605 in Modena, Emilia-Romagna (Italy), Acetaia Giusti is one of the oldest and most prestigious balsamic vinegar houses in the world. Their IGP balsamic vinegar, crafted using centuries-old traditional methods, brings an unmatched aromatic complexity to our dishes. Address: Strada de Ile Quattro Ville 155, 41123 Modena, Italy.">
+          Fondée en 1605 à Modène, en Émilie-Romagne (Italie), Acetaia Giusti est l'une des plus anciennes et prestigieuses maisons de vinaigre balsamique au monde. Leur vinaigre balsamique IGP, élaboré selon des méthodes traditionnelles séculaires, apporte à nos plats une complexité aromatique incomparable. Adresse : Strada de Ile Quattro Ville 155, 41123 Modena, Italie.
+        </p>
+        <a href="https://giusti.com" target="_blank" rel="noopener" class="btn-outline-sm">
+          <i class="fas fa-external-link-alt"></i> <span data-fr="Visiter le site" data-en="Visit Website">Visiter le site</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ IMPORTATION ═══════════ -->
+<section id="importation" class="section section-dark">
+  <div class="section-center reveal">
+    <p class="section-label" data-fr="Entreprise / Importation" data-en="Company / Importation">Entreprise / Importation</p>
+    <h2 data-fr="Notre démarche d'importation" data-en="Our Importation Process">Notre démarche d'importation</h2>
+    <p class="section-intro" data-fr="Pour vous offrir la vinaigrette balsamique Acetaia Giusti d'Italie, nous avons mis en place un processus d'importation rigoureux. Nous utilisons l'Incoterm CIF (Cost, Insurance and Freight) via le Port de Montréal, garantissant une livraison sécurisée et assurée jusqu'au Canada." data-en="To bring you Acetaia Giusti balsamic vinaigrette from Italy, we have put in place a rigorous importation process. We use the CIF (Cost, Insurance and Freight) Incoterm via the Port of Montreal, ensuring safe and insured delivery to Canada.">
+      Pour vous offrir la vinaigrette balsamique Acetaia Giusti d'Italie, nous avons mis en place un processus d'importation rigoureux. Nous utilisons l'Incoterm CIF (Cost, Insurance and Freight) via le Port de Montréal, garantissant une livraison sécurisée et assurée jusqu'au Canada.
+    </p>
+  </div>
+
+  <div class="schema-container reveal">
+    <div class="schema-step">
+      <div class="schema-icon"><i class="fas fa-industry"></i></div>
+      <div class="schema-info">
+        <h4 data-fr="Usine Acetaia Giusti" data-en="Acetaia Giusti Factory">Usine Acetaia Giusti</h4>
+        <p data-fr="Modène, Italie" data-en="Modena, Italy">Modène, Italie</p>
+        <span class="schema-tag" data-fr="Vendeur" data-en="Seller">Vendeur</span>
+      </div>
+    </div>
+    <div class="schema-arrow"><i class="fas fa-truck"></i><small data-fr="Transport routier" data-en="Road Transport">Transport routier</small></div>
+
+    <div class="schema-step">
+      <div class="schema-icon"><i class="fas fa-anchor"></i></div>
+      <div class="schema-info">
+        <h4 data-fr="Port de Gênes" data-en="Port of Genoa">Port de Gênes</h4>
+        <p data-fr="Gênes, Italie" data-en="Genoa, Italy">Gênes, Italie</p>
+        <span class="schema-tag" data-fr="Embarquement" data-en="Loading">Embarquement</span>
+      </div>
+    </div>
+    <div class="schema-arrow"><i class="fas fa-ship"></i><small data-fr="Transport maritime (CIF)" data-en="Maritime Transport (CIF)">Transport maritime (CIF)</small></div>
+
+    <div class="schema-step schema-step-center">
+      <div class="schema-icon schema-icon-gold"><i class="fas fa-shield-alt"></i></div>
+      <div class="schema-info">
+        <h4 data-fr="Poste frontalier" data-en="Border Post">Poste frontalier</h4>
+        <p data-fr="Douane – Montréal (395)" data-en="Customs – Montreal (395)">Douane – Montréal (395)</p>
+        <span class="schema-tag tag-gold" data-fr="AECG" data-en="CETA">AECG</span>
+      </div>
+    </div>
+    <div class="schema-arrow"><i class="fas fa-truck"></i><small data-fr="Transport routier" data-en="Road Transport">Transport routier</small></div>
+
+    <div class="schema-step">
+      <div class="schema-icon"><i class="fas fa-warehouse"></i></div>
+      <div class="schema-info">
+        <h4 data-fr="Port de Montréal" data-en="Port of Montreal">Port de Montréal</h4>
+        <p data-fr="Montréal, Canada" data-en="Montreal, Canada">Montréal, Canada</p>
+        <span class="schema-tag tag-blue" data-fr="Acheteur" data-en="Buyer">Acheteur</span>
+      </div>
+    </div>
+    <div class="schema-arrow"><i class="fas fa-truck"></i><small data-fr="Livraison finale" data-en="Final Delivery">Livraison finale</small></div>
+
+    <div class="schema-step">
+      <div class="schema-icon"><i class="fas fa-utensils"></i></div>
+      <div class="schema-info">
+        <h4>Terroirs Croisés</h4>
+        <p data-fr="Sherbrooke, Québec" data-en="Sherbrooke, Quebec">Sherbrooke, Québec</p>
+        <span class="schema-tag tag-blue" data-fr="Destination" data-en="Destination">Destination</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="import-details reveal">
+    <div class="import-detail-card">
+      <i class="fas fa-file-contract"></i>
+      <h4 data-fr="Incoterm" data-en="Incoterm">Incoterm</h4>
+      <p>CIF – Port de Montréal, Incoterms 2020</p>
+    </div>
+    <div class="import-detail-card">
+      <i class="fas fa-ship"></i>
+      <h4 data-fr="Transport" data-en="Transport">Transport</h4>
+      <p data-fr="Maritime (cargo conteneur)" data-en="Maritime (container cargo)">Maritime (cargo conteneur)</p>
+    </div>
+    <div class="import-detail-card">
+      <i class="fas fa-handshake"></i>
+      <h4 data-fr="Accord commercial" data-en="Trade Agreement">Accord commercial</h4>
+      <p data-fr="AECG (Canada–UE)" data-en="CETA (Canada–EU)">AECG (Canada–UE)</p>
+    </div>
+    <div class="import-detail-card">
+      <i class="fas fa-barcode"></i>
+      <h4 data-fr="Code SH" data-en="HS Code">Code SH</h4>
+      <p>2209.00.00.00</p>
+    </div>
+  </div>
+
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ NOUVEAUTÉS ═══════════ -->
+<section id="nouveautes" class="section section-nouveau">
+  <div class="nouveaute-bg" style="background-image:url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')"></div>
+  <div class="nouveaute-overlay"></div>
+  <div class="section-inner nouveaute-inner">
+    <div class="nouveaute-badge-wrap reveal-left">
+      <div class="nouveaute-badge">
+        <span data-fr="NOUVEAUTÉ" data-en="NEW ARRIVAL">NOUVEAUTÉ</span>
+        <span data-fr="Produit Importé" data-en="Imported Product">Produit Importé</span>
+        <span>🇮🇹 Italie</span>
+      </div>
+      <div class="product-showcase">
+        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vinaigrette italienne artisanale Acetaia Giusti" loading="lazy" />
+      </div>
+    </div>
+    <div class="nouveaute-text reveal-right">
+      <p class="section-label" data-fr="Nos produits / Nouveautés" data-en="Our Products / New Arrivals">Nos produits / Nouveautés</p>
+      <h2 data-fr="Vinaigrette italienne artisanale" data-en="Artisanal Italian Vinaigrette">Vinaigrette italienne artisanale</h2>
+      <p class="nouveaute-origin" data-fr="Origine : Modène, Italie · Marque : Acetaia Giusti" data-en="Origin: Modena, Italy · Brand: Acetaia Giusti">Origine : Modène, Italie · Marque : Acetaia Giusti</p>
+      <p data-fr="Notre toute nouvelle vinaigrette est importée directement d'Italie, préparée à base d'huile d'olive extravierge, de vinaigre balsamique de Modène IGP (Indication Géographique Protégée) et d'herbes méditerranéennes. Ce produit d'exception apporte une touche internationale raffinée à nos salades et nos plats signature. Conditionnée en élégantes bouteilles de verre de 250 ml, elle est désormais disponible à l'achat dans notre boutique en ligne et dans notre espace boutique au restaurant." data-en="Our brand new vinaigrette is imported directly from Italy, made from extra-virgin olive oil, Modena IGP balsamic vinegar (Protected Geographical Indication) and Mediterranean herbs. This exceptional product adds a refined international touch to our signature salads and dishes. Packaged in elegant 250ml glass bottles, it is now available for purchase in our online store and in our boutique space at the restaurant.">
+        Notre toute nouvelle vinaigrette est importée directement d'Italie, préparée à base d'huile d'olive extravierge, de vinaigre balsamique de Modène IGP (Indication Géographique Protégée) et d'herbes méditerranéennes. Ce produit d'exception apporte une touche internationale raffinée à nos salades et nos plats signature. Conditionnée en élégantes bouteilles de verre de 250 ml, elle est désormais disponible à l'achat dans notre boutique en ligne et dans notre espace boutique au restaurant.
+      </p>
+      <div class="nouveaute-specs">
+        <div><i class="fas fa-check-circle"></i> <span data-fr="Vinaigre balsamique IGP de Modène" data-en="Modena IGP Balsamic Vinegar">Vinaigre balsamique IGP de Modène</span></div>
+        <div><i class="fas fa-check-circle"></i> <span data-fr="Huile d'olive extravierge italienne" data-en="Italian extra-virgin olive oil">Huile d'olive extravierge italienne</span></div>
+        <div><i class="fas fa-check-circle"></i> <span data-fr="Bouteille en verre 250 ml" data-en="250ml glass bottle">Bouteille en verre 250 ml</span></div>
+        <div><i class="fas fa-check-circle"></i> <span data-fr="Sans conservateur artificiel" data-en="No artificial preservatives">Sans conservateur artificiel</span></div>
+      </div>
+      <div class="nouveaute-price">60,00 $</div>
+      <button class="btn-gold add-to-cart-btn" data-id="4" data-name="Vinaigrette italienne artisanale" data-price="60.00" data-fr="Ajouter au panier" data-en="Add to Cart">Ajouter au panier</button>
+    </div>
+  </div>
+  <div class="social-bar social-bar-light">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ BOUTIQUE EN LIGNE ═══════════ -->
+<section id="boutique" class="section section-light">
+  <div class="section-center reveal">
+    <p class="section-label" data-fr="Nos produits / Boutique" data-en="Our Products / Shop">Nos produits / Boutique</p>
+    <h2 data-fr="Boutique en ligne" data-en="Online Store">Boutique en ligne</h2>
+    <p class="section-intro" data-fr="Découvrez notre sélection de produits phares, issus du terroir québécois et d'une importation italienne soigneusement choisie. Commandez dès maintenant et recevez directement chez vous les saveurs de Terroirs Croisés." data-en="Discover our selection of signature products, from Quebec's terroir and a carefully chosen Italian import. Order now and receive the flavors of Terroirs Croisés directly to your door.">
+      Découvrez notre sélection de produits phares, issus du terroir québécois et d'une importation italienne soigneusement choisie. Commandez dès maintenant et recevez directement chez vous les saveurs de Terroirs Croisés.
+    </p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- Produit 1 -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Poutine traditionnelle québécoise" loading="lazy" />
+        <span class="product-origin-tag" data-fr="🍁 Produit local" data-en="🍁 Local Product">🍁 Produit local</span>
+        <button class="product-wishlist" aria-label="Favoris"><i class="far fa-heart"></i></button>
+      </div>
+      <div class="product-body">
+        <h3 data-fr="Poutine traditionnelle" data-en="Traditional Poutine">Poutine traditionnelle</h3>
+        <p class="product-origin-text" data-fr="Produit local – Québec, Canada" data-en="Local Product – Quebec, Canada">Produit local – Québec, Canada</p>
+        <p class="product-desc" data-fr="Plat emblématique du Québec composé de frites croustillantes, de fromage en grains frais et d'une sauce brune maison. Caractéristiques : ① Fromage en grains frais du Québec ② Frites artisanales croustillantes ③ Sauce brune maison mijotée" data-en="Iconic Quebec dish made with crispy fries, fresh cheese curds and house-made brown gravy. Characteristics: ① Fresh Quebec cheese curds ② Crispy artisan fries ③ House-made simmered brown gravy">
+          Plat emblématique du Québec composé de frites croustillantes, de fromage en grains frais et d'une sauce brune maison. Caractéristiques : ① Fromage en grains frais du Québec ② Frites artisanales croustillantes ③ Sauce brune maison mijotée
+        </p>
+        <div class="product-footer">
+          <span class="product-price">20,00 $</span>
+          <button class="btn-gold add-to-cart-btn" data-id="1" data-name="Poutine traditionnelle" data-price="20.00" data-fr="Ajouter" data-en="Add">Ajouter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produit 2 -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Tourtière du Lac-Saint-Jean" loading="lazy" />
+        <span class="product-origin-tag" data-fr="🍁 Produit local" data-en="🍁 Local Product">🍁 Produit local</span>
+        <button class="product-wishlist" aria-label="Favoris"><i class="far fa-heart"></i></button>
+      </div>
+      <div class="product-body">
+        <h3 data-fr="Tourtière du Lac-Saint-Jean" data-en="Lac-Saint-Jean Tourtière">Tourtière du Lac-Saint-Jean</h3>
+        <p class="product-origin-text" data-fr="Produit local – Québec, Canada" data-en="Local Product – Quebec, Canada">Produit local – Québec, Canada</p>
+        <p class="product-desc" data-fr="Recette traditionnelle préparée avec de la viande locale, des pommes de terre et des épices, cuite lentement dans une pâte dorée. Caractéristiques : ① Viande locale (porc et bœuf) ② Pommes de terre du Québec ③ Pâte feuilletée maison dorée" data-en="Traditional recipe made with local meat, potatoes and spices, slowly baked in a golden pastry. Characteristics: ① Local meat (pork and beef) ② Quebec potatoes ③ House-made golden flaky pastry">
+          Recette traditionnelle préparée avec de la viande locale, des pommes de terre et des épices, cuite lentement dans une pâte dorée. Caractéristiques : ① Viande locale (porc et bœuf) ② Pommes de terre du Québec ③ Pâte feuilletée maison dorée
+        </p>
+        <div class="product-footer">
+          <span class="product-price">15,00 $ <small data-fr="/tarte" data-en="/pie">/tarte</small></span>
+          <button class="btn-gold add-to-cart-btn" data-id="2" data-name="Tourtière du Lac-Saint-Jean" data-price="15.00" data-fr="Ajouter" data-en="Add">Ajouter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produit 3 -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Saumon fumé de la Gaspésie" loading="lazy" />
+        <span class="product-origin-tag" data-fr="🍁 Produit local" data-en="🍁 Local Product">🍁 Produit local</span>
+        <button class="product-wishlist" aria-label="Favoris"><i class="far fa-heart"></i></button>
+      </div>
+      <div class="product-body">
+        <h3 data-fr="Saumon fumé de la Gaspésie" data-en="Smoked Salmon from Gaspésie">Saumon fumé de la Gaspésie</h3>
+        <p class="product-origin-text" data-fr="Produit local – Gaspésie, Québec" data-en="Local Product – Gaspésie, Quebec">Produit local – Gaspésie, Québec</p>
+        <p class="product-desc" data-fr="Saumon de qualité supérieure fumé selon une méthode artisanale traditionnelle. Caractéristiques : ① Saumon de l'Atlantique de la Gaspésie ② Fumage artisanal à froid ③ Servi avec accompagnements frais de saison" data-en="Premium quality salmon smoked using traditional artisanal methods. Characteristics: ① Atlantic salmon from Gaspésie ② Artisanal cold smoking ③ Served with fresh seasonal accompaniments">
+          Saumon de qualité supérieure fumé selon une méthode artisanale traditionnelle. Caractéristiques : ① Saumon de l'Atlantique de la Gaspésie ② Fumage artisanal à froid ③ Servi avec accompagnements frais de saison
+        </p>
+        <div class="product-footer">
+          <span class="product-price">35,00 $</span>
+          <button class="btn-gold add-to-cart-btn" data-id="3" data-name="Saumon fumé de la Gaspésie" data-price="35.00" data-fr="Ajouter" data-en="Add">Ajouter</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produit 4 -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Vinaigrette italienne artisanale Acetaia Giusti" loading="lazy" />
+        <span class="product-origin-tag tag-italy" data-fr="🇮🇹 Importé d'Italie" data-en="🇮🇹 Imported from Italy">🇮🇹 Importé d'Italie</span>
+        <button class="product-wishlist" aria-label="Favoris"><i class="far fa-heart"></i></button>
+        <div class="product-badge-new" data-fr="NOUVEAU" data-en="NEW">NOUVEAU</div>
+      </div>
+      <div class="product-body">
+        <h3 data-fr="Vinaigrette italienne artisanale" data-en="Artisanal Italian Vinaigrette">Vinaigrette italienne artisanale</h3>
+        <p class="product-origin-text" data-fr="Produit importé – Modène, Italie · Acetaia Giusti" data-en="Imported Product – Modena, Italy · Acetaia Giusti">Produit importé – Modène, Italie · Acetaia Giusti</p>
+        <p class="product-desc" data-fr="Vinaigrette importée d'Italie à base d'huile d'olive extravierge et vinaigre balsamique IGP de Modène. Caractéristiques : ① Vinaigre balsamique IGP de Modène ② Huile d'olive extravierge ③ Herbes méditerranéennes sélectionnées" data-en="Vinaigrette imported from Italy made with extra-virgin olive oil and IGP Modena balsamic vinegar. Characteristics: ① IGP Modena balsamic vinegar ② Extra-virgin olive oil ③ Selected Mediterranean herbs">
+          Vinaigrette importée d'Italie à base d'huile d'olive extravierge et vinaigre balsamique IGP de Modène. Caractéristiques : ① Vinaigre balsamique IGP de Modène ② Huile d'olive extravierge ③ Herbes méditerranéennes sélectionnées
+        </p>
+        <div class="product-footer">
+          <span class="product-price">60,00 $</span>
+          <button class="btn-gold add-to-cart-btn" data-id="4" data-name="Vinaigrette italienne artisanale" data-price="60.00" data-fr="Ajouter" data-en="Add">Ajouter</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ POINTS DE VENTE ═══════════ -->
+<section id="points-vente" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-text reveal-left">
+      <p class="section-label" data-fr="Nos produits / Points de vente" data-en="Our Products / Points of Sale">Nos produits / Points de vente</p>
+      <h2 data-fr="Où nous trouver ?" data-en="Where to Find Us?">Où nous trouver ?</h2>
+      <p data-fr="Nos produits sont disponibles directement chez nous, en restaurant ou via notre boutique en ligne. Venez vivre l'expérience Terroirs Croisés ou commandez confortablement depuis chez vous." data-en="Our products are available directly from us, at the restaurant or via our online store. Come experience Terroirs Croisés or order comfortably from home.">
+        Nos produits sont disponibles directement chez nous, en restaurant ou via notre boutique en ligne. Venez vivre l'expérience Terroirs Croisés ou commandez confortablement depuis chez vous.
+      </p>
+
+      <div class="pv-cards">
+        <div class="pv-card">
+          <div class="pv-icon"><i class="fas fa-store"></i></div>
+          <div class="pv-info">
+            <h4 data-fr="Restaurant – Pignon sur rue" data-en="Restaurant – Physical Location">Restaurant – Pignon sur rue</h4>
+            <p>Terroirs Croisés</p>
+            <p>219 rue Queen</p>
+            <p>Sherbrooke, Québec J1M 1K4</p>
+            <p><i class="fas fa-phone"></i> (819) 354-5180</p>
+          </div>
+        </div>
+        <div class="pv-card">
+          <div class="pv-icon"><i class="fas fa-laptop"></i></div>
+          <div class="pv-info">
+            <h4 data-fr="Boutique en ligne" data-en="Online Store">Boutique en ligne</h4>
+            <p>www.TerroirsCroisés.com</p>
+            <p data-fr="Livraison partout au Québec" data-en="Delivery throughout Quebec">Livraison partout au Québec</p>
+            <p data-fr="Disponible 24h/24, 7j/7" data-en="Available 24/7">Disponible 24h/24, 7j/7</p>
+            <a href="#boutique" class="btn-outline-sm" data-fr="Magasiner maintenant" data-en="Shop Now">Magasiner maintenant</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-media reveal-right">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Intérieur restaurant Terroirs Croisés" loading="lazy" />
+    </div>
+  </div>
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES OFFERTS ═══════════ -->
+<section id="services" class="section section-light">
+  <div class="section-center reveal">
+    <p class="section-label" data-fr="Nos produits / Services" data-en="Our Products / Services">Nos produits / Services</p>
+    <h2 data-fr="Services offerts" data-en="Services Offered">Services offerts</h2>
+    <p class="section-intro" data-fr="Chez Terroirs Croisés, nous vous offrons bien plus qu'un repas. Découvrez l'ensemble de nos services complémentaires conçus pour enrichir votre expérience gastronomique." data-en="At Terroirs Croisés, we offer you much more than a meal. Discover all of our complementary services designed to enrich your gastronomic experience.">
+      Chez Terroirs Croisés, nous vous offrons bien plus qu'un repas. Découvrez l'ensemble de nos services complémentaires conçus pour enrichir votre expérience gastronomique.
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Service de livraison" loading="lazy" />
+      <div class="service-body">
+        <div class="service-icon"><i class="fas fa-truck"></i></div>
+        <h3 data-fr="Livraison à domicile" data-en="Home Delivery">Livraison à domicile</h3>
+        <p data-fr="Recevez nos produits directement chez vous, partout au Québec. Nos commandes sont soigneusement emballées pour garantir la fraîcheur et la qualité de chaque article lors de la livraison." data-en="Receive our products directly at your home, anywhere in Quebec. Our orders are carefully packaged to guarantee the freshness and quality of each item upon delivery.">
+          Recevez nos produits directement chez vous, partout au Québec. Nos commandes sont soigneusement emballées pour garantir la fraîcheur et la qualité de chaque article lors de la livraison.
+        </p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Réservation en ligne" loading="lazy" />
+      <div class="service-body">
+        <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
+        <h3 data-fr="Réservation en ligne" data-en="Online Reservation">Réservation en ligne</h3>
+        <p data-fr="Réservez votre table directement en ligne en quelques clics. Que ce soit pour un dîner romantique, un repas d'affaires ou une célébration en famille, nous nous adaptons à toutes vos occasions spéciales." data-en="Book your table directly online in just a few clicks. Whether for a romantic dinner, a business meal or a family celebration, we adapt to all your special occasions.">
+          Réservez votre table directement en ligne en quelques clics. Que ce soit pour un dîner romantique, un repas d'affaires ou une célébration en famille, nous nous adaptons à toutes vos occasions spéciales.
+        </p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Service traiteur" loading="lazy" />
+      <div class="service-body">
+        <div class="service-icon"><i class="fas fa-concierge-bell"></i></div>
+        <h3 data-fr="Service traiteur" data-en="Catering Service">Service traiteur</h3>
+        <p data-fr="Nous offrons un service traiteur haut de gamme pour vos événements privés et corporatifs. Notre chef et son équipe se déplacent pour apporter l'expérience Terroirs Croisés directement à votre porte, avec des menus personnalisés selon vos besoins." data-en="We offer a high-end catering service for your private and corporate events. Our chef and team travel to bring the Terroirs Croisés experience directly to your door, with customized menus tailored to your needs.">
+          Nous offrons un service traiteur haut de gamme pour vos événements privés et corporatifs. Notre chef et son équipe se déplacent pour apporter l'expérience Terroirs Croisés directement à votre porte, avec des menus personnalisés selon vos besoins.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ GARANTIE ═══════════ -->
+<section id="garantie" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-media reveal-left">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Garantie de qualité Terroirs Croisés" loading="lazy" />
+    </div>
+    <div class="section-text reveal-right">
+      <p class="section-label" data-fr="Nos produits / Garantie" data-en="Our Products / Warranty">Nos produits / Garantie</p>
+      <h2 data-fr="Notre Garantie" data-en="Our Warranty">Notre Garantie</h2>
+      <p data-fr="Chez Terroirs Croisés, votre satisfaction est notre priorité absolue. Nous garantissons la qualité de chaque produit vendu et nous nous engageons à vous offrir une expérience d'achat sereine et sécurisée." data-en="At Terroirs Croisés, your satisfaction is our absolute priority. We guarantee the quality of every product sold and commit to providing you with a peaceful and secure shopping experience.">
+        Chez Terroirs Croisés, votre satisfaction est notre priorité absolue. Nous garantissons la qualité de chaque produit vendu et nous nous engageons à vous offrir une expérience d'achat sereine et sécurisée.
+      </p>
+      <div class="garantie-grid">
+        <div class="garantie-item">
+          <i class="fas fa-shield-alt"></i>
+          <div>
+            <h4 data-fr="Couverture" data-en="Coverage">Couverture</h4>
+            <p data-fr="Tous nos produits sont couverts contre les défauts de qualité, les dommages à la livraison et toute non-conformité par rapport à la description du produit. La garantie s'applique à l'ensemble de nos produits locaux et importés." data-en="All our products are covered against quality defects, delivery damage and any non-conformity with the product description. The warranty applies to all our local and imported products.">
+              Tous nos produits sont couverts contre les défauts de qualité, les dommages à la livraison et toute non-conformité par rapport à la description du produit.
+            </p>
+          </div>
+        </div>
+        <div class="garantie-item">
+          <i class="fas fa-exchange-alt"></i>
+          <div>
+            <h4 data-fr="Politique d'échange / Remboursement" data-en="Exchange / Refund Policy">Politique d'échange / Remboursement</h4>
+            <p data-fr="Si vous n'êtes pas entièrement satisfait de votre achat, nous acceptons les retours dans les 14 jours suivant la réception. Un échange ou un remboursement complet sera effectué pour tout produit défectueux ou endommagé." data-en="If you are not entirely satisfied with your purchase, we accept returns within 14 days of receipt. A full exchange or refund will be made for any defective or damaged product.">
+              Si vous n'êtes pas entièrement satisfait de votre achat, nous acceptons les retours dans les 14 jours suivant la réception. Un échange ou un remboursement complet sera effectué pour tout produit défectueux.
+            </p>
+          </div>
+        </div>
+        <div class="garantie-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h4 data-fr="Durée" data-en="Duration">Durée</h4>
+            <p data-fr="Notre garantie de satisfaction est valide pour une période de 14 jours suivant la date de livraison ou d'achat en magasin. Pour les produits alimentaires, la date limite de consommation indiquée sur l'emballage s'applique." data-en="Our satisfaction guarantee is valid for a period of 14 days from the date of delivery or in-store purchase. For food products, the best-before date indicated on the packaging applies.">
+              Notre garantie de satisfaction est valide pour une période de 14 jours suivant la date de livraison ou d'achat en magasin. Pour les produits alimentaires, la date limite de consommation s'applique.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ NOTRE ÉQUIPE ═══════════ -->
+<section id="equipe" class="section section-light">
+  <div class="section-center reveal">
+    <p class="section-label" data-fr="Notre équipe" data-en="Our Team">Notre équipe</p>
+    <h2 data-fr="Les artisans de votre expérience" data-en="The Artisans of Your Experience">Les artisans de votre expérience</h2>
+    <p class="section-intro" data-fr="Derrière chaque assiette, derrière chaque produit soigneusement sélectionné, se cache une équipe passionnée et dévouée. Rencontrez les gestionnaires de Terroirs Croisés." data-en="Behind every plate, behind every carefully selected product, lies a passionate and dedicated team. Meet the managers of Terroirs Croisés.">
+      Derrière chaque assiette, derrière chaque produit soigneusement sélectionné, se cache une équipe passionnée et dévouée. Rencontrez les gestionnaires de Terroirs Croisés.
+    </p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-img">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Amaury Dartois-Derveaux – Président et Fondateur" loading="lazy" />
+        <div class="team-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="team-info">
+        <h3>Amaury Dartois-Derveaux</h3>
+        <p class="team-title" data-fr="Président et Fondateur" data-en="President & Founder">Président et Fondateur</p>
+        <ul class="team-resp">
+          <li data-fr="Définition de la vision et de la stratégie globale de l'entreprise" data-en="Defining the company's overall vision and strategy">Définition de la vision et de la stratégie globale de l'entreprise</li>
+          <li data-fr="Supervision des partenariats internationaux et des relations fournisseurs" data-en="Supervising international partnerships and supplier relations">Supervision des partenariats internationaux et des relations fournisseurs</li>
+          <li data-fr="Gestion des relations avec les investisseurs et les parties prenantes" data-en="Managing relations with investors and stakeholders">Gestion des relations avec les investisseurs et les parties prenantes</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-img">
+        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Jérôme Sanou – Directeur des Opérations" loading="lazy" />
+        <div class="team-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="team-info">
+        <h3>Jérôme Sanou</h3>
+        <p class="team-title" data-fr="Directeur des Opérations" data-en="Director of Operations">Directeur des Opérations</p>
+        <ul class="team-resp">
+          <li data-fr="Coordination des opérations quotidiennes du restaurant et de la boutique" data-en="Coordination of daily restaurant and store operations">Coordination des opérations quotidiennes du restaurant et de la boutique</li>
+          <li data-fr="Gestion des procédures douanières et des formalités d'importation" data-en="Management of customs procedures and importation formalities">Gestion des procédures douanières et des formalités d'importation</li>
+          <li data-fr="Supervision de la chaîne d'approvisionnement et de la logistique" data-en="Supervising the supply chain and logistics">Supervision de la chaîne d'approvisionnement et de la logistique</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-img">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Danny Grimaud – Vice-Président" loading="lazy" />
+        <div class="team-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="team-info">
+        <h3>Danny Grimaud Agossou</h3>
+        <p class="team-title" data-fr="Vice-Président" data-en="Vice-President">Vice-Président</p>
+        <ul class="team-resp">
+          <li data-fr="Négociation et gestion des contrats commerciaux avec les fournisseurs" data-en="Negotiation and management of commercial contracts with suppliers">Négociation et gestion des contrats commerciaux avec les fournisseurs</li>
+          <li data-fr="Coordination des projets de développement et d'expansion" data-en="Coordination of development and expansion projects">Coordination des projets de développement et d'expansion</li>
+          <li data-fr="Représentation de l'entreprise lors des négociations internationales" data-en="Representing the company in international negotiations">Représentation de l'entreprise lors des négociations internationales</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-img">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Avit Ange Charlène Anaïs Laubouet – Directrice Marketing" loading="lazy" />
+        <div class="team-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="team-info">
+        <h3>Avit Ange Charlène Anaïs Laubouet</h3>
+        <p class="team-title" data-fr="Directrice des Ventes et Marketing" data-en="Director of Sales & Marketing">Directrice des Ventes et Marketing</p>
+        <ul class="team-resp">
+          <li data-fr="Développement et exécution des stratégies marketing et communication" data-en="Development and execution of marketing and communication strategies">Développement et exécution des stratégies marketing et communication</li>
+          <li data-fr="Gestion des réseaux sociaux et de la présence numérique de la marque" data-en="Management of social media and the brand's digital presence">Gestion des réseaux sociaux et de la présence numérique de la marque</li>
+          <li data-fr="Supervision des ventes en ligne et de la boutique en restaurant" data-en="Supervising online sales and the in-restaurant store">Supervision des ventes en ligne et de la boutique en restaurant</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ NOUS JOINDRE ═══════════ -->
+<section id="contact" class="section section-dark">
+  <div class="section-inner">
+    <div class="contact-info reveal-left">
+      <p class="section-label" data-fr="Nous joindre" data-en="Contact Us">Nous joindre</p>
+      <h2 data-fr="Contactez-nous" data-en="Get In Touch">Contactez-nous</h2>
+      <p data-fr="Nous serions ravis de vous accueillir ou de répondre à toutes vos questions. N'hésitez pas à nous contacter par téléphone, courriel ou en vous rendant directement à notre restaurant." data-en="We would love to welcome you or answer any of your questions. Feel free to contact us by phone, email or by visiting our restaurant directly.">
+        Nous serions ravis de vous accueillir ou de répondre à toutes vos questions. N'hésitez pas à nous contacter par téléphone, courriel ou en vous rendant directement à notre restaurant.
+      </p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4 data-fr="Adresse" data-en="Address">Adresse</h4>
+            <p>219 rue Queen<br>Sherbrooke, Québec J1M 1K4</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h4 data-fr="Téléphone" data-en="Phone">Téléphone</h4>
+            <p>(819) 354-5180</p>
+            <p class="contact-sub" data-fr="Télécopieur : (514) 241-2809" data-en="Fax: (514) 241-2809">Télécopieur : (514) 241-2809</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4 data-fr="Courriel" data-en="Email">Courriel</h4>
+            <p>info@terroiscroisés.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h4 data-fr="Heures d'ouverture" data-en="Opening Hours">Heures d'ouverture</h4>
+            <p data-fr="Lundi – Vendredi : 11h00 – 22h00" data-en="Monday – Friday: 11:00 AM – 10:00 PM">Lundi – Vendredi : 11h00 – 22h00</p>
+            <p data-fr="Samedi – Dimanche : 10h00 – 23h00" data-en="Saturday – Sunday: 10:00 AM – 11:00 PM">Samedi – Dimanche : 10h00 – 23h00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal-right">
+      <form class="contact-form" id="contact-form" novalidate>
+        <h3 data-fr="Envoyez-nous un message" data-en="Send Us a Message">Envoyez-nous un message</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname" data-fr="Prénom" data-en="First Name">Prénom</label>
+            <input type="text" id="fname" name="fname" required placeholder="Jean" />
+          </div>
+          <div class="form-group">
+            <label for="lname" data-fr="Nom" data-en="Last Name">Nom</label>
+            <input type="text" id="lname" name="lname" required placeholder="Tremblay" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" data-fr="Courriel" data-en="Email">Courriel</label>
+          <input type="email" id="email" name="email" required placeholder="jean.tremblay@exemple.com" />
+        </div>
+        <div class="form-group">
+          <label for="subject" data-fr="Sujet" data-en="Subject">Sujet</label>
+          <select id="subject" name="subject">
+            <option data-fr="Réservation" data-en="Reservation">Réservation</option>
+            <option data-fr="Commande en ligne" data-en="Online Order">Commande en ligne</option>
+            <option data-fr="Service traiteur" data-en="Catering Service">Service traiteur</option>
+            <option data-fr="Autre" data-en="Other">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message" data-fr="Message" data-en="Message">Message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Votre message..."></textarea>
+        </div>
+        <button type="submit" class="btn-gold" data-fr="Envoyer le message" data-en="Send Message">Envoyer le message</button>
+        <div class="form-success" id="form-success" style="display:none">
+          <i class="fas fa-check-circle"></i>
+          <span data-fr="Message envoyé avec succès. Nous vous répondrons sous 24h." data-en="Message sent successfully. We will reply within 24h.">Message envoyé avec succès. Nous vous répondrons sous 24h.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="contact-map reveal">
+    <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Sherbrooke, Québec" loading="lazy" style="width:100%;height:300px;object-fit:cover;border-radius:12px;" />
+  </div>
+
+  <div class="social-bar">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-tc">TC</span>
+      <div>
+        <span class="logo-name">Terroirs <em>Croisés</em></span>
+        <p data-fr="Où le Québec rencontre le monde" data-en="Where Quebec meets the world">Où le Québec rencontre le monde</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4 data-fr="Navigation" data-en="Navigation">Navigation</h4>
+        <ul>
+          <li><a href="#accueil" data-fr="Accueil" data-en="Home">Accueil</a></li>
+          <li><a href="#apropos" data-fr="À propos" data-en="About">À propos</a></li>
+          <li><a href="#boutique" data-fr="Boutique" data-en="Shop">Boutique</a></li>
+          <li><a href="#equipe" data-fr="Notre équipe" data-en="Our Team">Notre équipe</a></li>
+          <li><a href="#contact" data-fr="Nous joindre" data-en="Contact">Nous joindre</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-fr="Produits" data-en="Products">Produits</h4>
+        <ul>
+          <li><a href="#boutique" data-fr="Poutine traditionnelle" data-en="Traditional Poutine">Poutine traditionnelle</a></li>
+          <li><a href="#boutique" data-fr="Tourtière du Lac-St-Jean" data-en="Lac-St-Jean Tourtière">Tourtière du Lac-St-Jean</a></li>
+          <li><a href="#boutique" data-fr="Saumon fumé Gaspésie" data-en="Gaspésie Smoked Salmon">Saumon fumé Gaspésie</a></li>
+          <li><a href="#boutique" data-fr="Vinaigrette italienne" data-en="Italian Vinaigrette">Vinaigrette italienne</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-fr="Contact" data-en="Contact">Contact</h4>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> 219 rue Queen, Sherbrooke</li>
+          <li><i class="fas fa-phone"></i> (819) 354-5180</li>
+          <li><i class="fas fa-envelope"></i> info@terroiscroisés.com</li>
+        </ul>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-fr="© 2026 Terroirs Croisés. Tous droits réservés." data-en="© 2026 Terroirs Croisés. All rights reserved.">© 2026 Terroirs Croisés. Tous droits réservés.</p>
+    <p data-fr="219 rue Queen, Sherbrooke, Québec J1M 1K4" data-en="219 Queen Street, Sherbrooke, Quebec J1M 1K4">219 rue Queen, Sherbrooke, Québec J1M 1K4</p>
+  </div>
+</footer>
+
+<!-- ═══════════ CHECKOUT MODAL ═══════════ -->
+<div id="checkout-overlay" class="checkout-overlay"></div>
+
+<div id="checkout-modal" class="checkout-modal" role="dialog" aria-modal="true" aria-label="Caisse">
+
+  <button id="close-checkout" class="checkout-close" aria-label="Fermer">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <!-- ── Success Screen ── -->
+  <div id="payment-success" class="payment-success" style="display:none;">
+    <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+    <h2 data-fr="Paiement réussi !" data-en="Payment Successful!">Paiement réussi !</h2>
+    <p id="success-msg" data-fr="Merci pour votre commande. Un courriel de confirmation vous sera envoyé sous peu." data-en="Thank you for your order. A confirmation email will be sent to you shortly.">Merci pour votre commande. Un courriel de confirmation vous sera envoyé sous peu.</p>
+    <div class="success-order-num"></div>
+    <button class="btn-gold" id="success-close" data-fr="Retour à la boutique" data-en="Back to Shop">Retour à la boutique</button>
+  </div>
+
+  <!-- ── Main Checkout Grid ── -->
+  <div id="checkout-content" class="checkout-grid">
+
+    <!-- LEFT : Order Summary -->
+    <div class="checkout-summary">
+      <div class="checkout-logo">
+        <span class="logo-tc">TC</span>
+        <span class="logo-name">Terroirs <em>Croisés</em></span>
+      </div>
+      <h3 class="checkout-section-title" data-fr="Récapitulatif de commande" data-en="Order Summary">Récapitulatif de commande</h3>
+      <div id="checkout-items" class="checkout-items-list"></div>
+      <div class="checkout-divider"></div>
+      <div class="checkout-line">
+        <span data-fr="Sous-total" data-en="Subtotal">Sous-total</span>
+        <span id="co-subtotal">0,00 $</span>
+      </div>
+      <div class="checkout-line">
+        <span data-fr="TPS (5%)" data-en="GST (5%)">TPS (5%)</span>
+        <span id="co-tps">0,00 $</span>
+      </div>
+      <div class="checkout-line">
+        <span data-fr="TVQ (9,975%)" data-en="QST (9.975%)">TVQ (9,975%)</span>
+        <span id="co-tvq">0,00 $</span>
+      </div>
+      <div class="checkout-line checkout-total-line">
+        <span data-fr="Total" data-en="Total">Total</span>
+        <span id="co-total" class="co-total-amt">0,00 $</span>
+      </div>
+      <div class="checkout-secure">
+        <i class="fas fa-lock"></i>
+        <span data-fr="Paiement 100% sécurisé et chiffré" data-en="100% secure and encrypted payment">Paiement 100% sécurisé et chiffré</span>
+      </div>
+    </div>
+
+    <!-- RIGHT : Payment -->
+    <div class="checkout-payment-col">
+      <h3 class="checkout-section-title" data-fr="Mode de paiement" data-en="Payment Method">Mode de paiement</h3>
+
+      <!-- Payment method tabs -->
+      <div class="payment-tabs">
+        <button class="ptab active" data-target="tab-paypal">
+          <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" style="height:20px;vertical-align:middle;" />
+          PayPal
+        </button>
+        <button class="ptab" data-target="tab-card">
+          <i class="fas fa-credit-card"></i>
+          <span data-fr="Carte bancaire" data-en="Credit Card">Carte bancaire</span>
+        </button>
+      </div>
+
+      <!-- ── Tab: PayPal ── -->
+      <div id="tab-paypal" class="payment-panel active">
+        <div class="paypal-info">
+          <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" class="paypal-logo-img" />
+          <p data-fr="Payez rapidement et en toute sécurité avec votre compte PayPal. Vous serez redirigé vers PayPal pour finaliser votre paiement." data-en="Pay quickly and securely with your PayPal account. You will be redirected to PayPal to complete your payment.">
+            Payez rapidement et en toute sécurité avec votre compte PayPal. Vous serez redirigé vers PayPal pour finaliser votre paiement.
+          </p>
+        </div>
+        <button id="paypal-btn" class="paypal-button">
+          <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" style="height:22px;" />
+          <span data-fr="Payer avec PayPal" data-en="Pay with PayPal">Payer avec PayPal</span>
+        </button>
+        <div class="paypal-accepted">
+          <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-medium.png" alt="Cartes acceptées" />
+        </div>
+      </div>
+
+      <!-- ── Tab: Credit Card ── -->
+      <div id="tab-card" class="payment-panel">
+        <form id="cc-form" novalidate>
+
+          <!-- Card holder -->
+          <div class="cc-group">
+            <label for="cc-name" data-fr="Nom du titulaire" data-en="Cardholder Name">Nom du titulaire</label>
+            <div class="cc-input-wrap">
+              <input type="text" id="cc-name" name="cc-name" placeholder="Jean Tremblay" autocomplete="cc-name" maxlength="60" />
+              <i class="fas fa-user cc-input-icon"></i>
+            </div>
+            <span class="cc-error" id="err-name"></span>
+          </div>
+
+          <!-- Card number -->
+          <div class="cc-group">
+            <label for="cc-number" data-fr="Numéro de carte" data-en="Card Number">Numéro de carte</label>
+            <div class="cc-input-wrap">
+              <input type="text" id="cc-number" name="cc-number" placeholder="1234 5678 9012 3456" autocomplete="cc-number" inputmode="numeric" maxlength="19" />
+              <div class="cc-card-type" id="cc-card-type">
+                <i class="far fa-credit-card"></i>
+              </div>
+            </div>
+            <span class="cc-error" id="err-number"></span>
+          </div>
+
+          <!-- Expiry + CVV -->
+          <div class="cc-row">
+            <div class="cc-group">
+              <label for="cc-expiry" data-fr="Date d'expiration" data-en="Expiry Date">Date d'expiration</label>
+              <div class="cc-input-wrap">
+                <input type="text" id="cc-expiry" name="cc-expiry" placeholder="MM / AA" autocomplete="cc-exp" inputmode="numeric" maxlength="7" />
+                <i class="fas fa-calendar-alt cc-input-icon"></i>
+              </div>
+              <span class="cc-error" id="err-expiry"></span>
+            </div>
+            <div class="cc-group">
+              <label for="cc-cvv" data-fr="CVV / CVC" data-en="CVV / CVC">CVV / CVC</label>
+              <div class="cc-input-wrap">
+                <input type="text" id="cc-cvv" name="cc-cvv" placeholder="123" autocomplete="cc-csc" inputmode="numeric" maxlength="4" />
+                <i class="fas fa-lock cc-input-icon" id="cvv-icon"></i>
+              </div>
+              <span class="cc-error" id="err-cvv"></span>
+            </div>
+          </div>
+
+          <!-- Email for receipt -->
+          <div class="cc-group">
+            <label for="cc-email" data-fr="Courriel (pour le reçu)" data-en="Email (for receipt)">Courriel (pour le reçu)</label>
+            <div class="cc-input-wrap">
+              <input type="email" id="cc-email" name="cc-email" placeholder="votre@courriel.com" autocomplete="email" />
+              <i class="fas fa-envelope cc-input-icon"></i>
+            </div>
+            <span class="cc-error" id="err-email"></span>
+          </div>
+
+          <!-- Card visual -->
+          <div class="card-visual" id="card-visual">
+            <div class="card-visual-inner" id="card-visual-inner">
+              <div class="card-front">
+                <div class="card-chip"><i class="fas fa-microchip"></i></div>
+                <div class="card-number-display" id="cv-number">•••• •••• •••• ••••</div>
+                <div class="card-bottom">
+                  <div>
+                    <div class="card-label" data-fr="Titulaire" data-en="Holder">Titulaire</div>
+                    <div class="card-name-display" id="cv-name">JEAN TREMBLAY</div>
+                  </div>
+                  <div>
+                    <div class="card-label" data-fr="Expire" data-en="Expires">Expire</div>
+                    <div class="card-exp-display" id="cv-expiry">MM/AA</div>
+                  </div>
+                  <div class="card-brand-display" id="cv-brand">
+                    <i class="far fa-credit-card fa-2x"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="card-back">
+                <div class="card-stripe"></div>
+                <div class="card-sig-area">
+                  <div class="card-sig-line"></div>
+                  <div class="card-cvv-display" id="cv-cvv">•••</div>
+                </div>
+                <p class="card-back-note">Ce n'est pas une vraie carte</p>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-gold cc-pay-btn" id="cc-pay-btn">
+            <i class="fas fa-lock"></i>
+            <span id="cc-pay-label" data-fr="Payer maintenant" data-en="Pay Now">Payer maintenant</span>
+            <span id="cc-pay-amount"></span>
+          </button>
+
+          <p class="cc-disclaimer" data-fr="Vos informations de paiement sont chiffrées SSL 256 bits. Nous ne stockons pas vos données de carte." data-en="Your payment information is encrypted with 256-bit SSL. We do not store your card data.">
+            <i class="fas fa-shield-alt"></i> Vos informations de paiement sont chiffrées SSL 256 bits. Nous ne stockons pas vos données de carte.
+          </p>
+        </form>
+      </div>
+      <!-- end tab-card -->
+
+    </div>
+    <!-- end checkout-payment-col -->
+
+  </div>
+  <!-- end checkout-grid -->
+
+</div>
+<!-- end checkout-modal -->
+
+<!-- ═══════════ PAYPAL POPUP SIMULATION ═══════════ -->
+<div id="pp-popup-overlay" class="pp-popup-overlay" style="display:none;">
+  <div class="pp-popup">
+    <div class="pp-popup-header">
+      <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" style="height:40px;" />
+      <button id="pp-popup-close" class="pp-close"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="pp-step-login" class="pp-step active">
+      <h3 data-fr="Connectez-vous à PayPal" data-en="Log in to PayPal">Connectez-vous à PayPal</h3>
+      <div class="pp-form-group">
+        <label data-fr="Adresse courriel ou numéro de téléphone" data-en="Email or phone number">Adresse courriel ou numéro de téléphone</label>
+        <input type="email" id="pp-email" placeholder="exemple@courriel.com" />
+      </div>
+      <div class="pp-form-group">
+        <label data-fr="Mot de passe" data-en="Password">Mot de passe</label>
+        <input type="password" id="pp-pass" placeholder="••••••••" />
+      </div>
+      <button class="pp-login-btn" id="pp-login-btn" data-fr="Se connecter" data-en="Log In">Se connecter</button>
+      <p class="pp-link" data-fr="Mot de passe oublié ?" data-en="Forgot password?">Mot de passe oublié ?</p>
+    </div>
+    <div id="pp-step-confirm" class="pp-step" style="display:none;">
+      <div class="pp-confirm-logo"><i class="fas fa-shield-alt"></i></div>
+      <h3 data-fr="Confirmer le paiement" data-en="Confirm Payment">Confirmer le paiement</h3>
+      <div class="pp-confirm-amount" id="pp-confirm-amount">0,00 $</div>
+      <p data-fr="Paiement à : Terroirs Croisés" data-en="Payment to: Terroirs Croisés">Paiement à : <strong>Terroirs Croisés</strong></p>
+      <button class="pp-login-btn pp-confirm-btn" id="pp-confirm-btn" data-fr="Confirmer et payer" data-en="Confirm & Pay">Confirmer et payer</button>
+      <button class="pp-cancel-btn" id="pp-cancel-btn" data-fr="Annuler" data-en="Cancel">Annuler</button>
+    </div>
+    <div id="pp-step-processing" class="pp-step" style="display:none;">
+      <div class="pp-spinner"></div>
+      <p data-fr="Traitement du paiement en cours…" data-en="Processing payment…">Traitement du paiement en cours…</p>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
