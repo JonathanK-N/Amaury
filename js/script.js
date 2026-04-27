@@ -227,19 +227,263 @@ function animateCartBtn() {
   setTimeout(() => { btn.style.transform = ''; }, 300);
 }
 
-// Checkout button
-document.addEventListener('DOMContentLoaded', () => {
-  const checkout = document.querySelector('.cart-checkout');
-  checkout?.addEventListener('click', () => {
+// ══════════════════════════════════
+// CHECKOUT MODAL
+// ══════════════════════════════════
+function initCheckout() {
+  const overlay = $('checkout-overlay');
+  const modal = $('checkout-modal');
+  const closeBtn = $('close-checkout');
+  const checkoutBtn = document.querySelector('.cart-checkout');
+  const successEl = $('payment-success');
+  const contentEl = $('checkout-content');
+  const successClose = $('success-close');
+
+  function openCheckout() {
     if (cart.length === 0) return;
-    alert(lang === 'fr'
-      ? `Merci pour votre commande ! Total : ${formatPrice(cart.reduce((s,i)=>s+i.qty*i.price,0))}\nNous vous contacterons sous peu.`
-      : `Thank you for your order! Total: ${formatPrice(cart.reduce((s,i)=>s+i.qty*i.price,0))}\nWe will contact you shortly.`
-    );
+    renderCheckoutSummary();
+    overlay.classList.add('active');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    // Close cart sidebar
+    $('cart-sidebar')?.classList.remove('active');
+    $('cart-overlay')?.classList.remove('active');
+  }
+
+  function closeCheckout() {
+    overlay.classList.remove('active');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    // Reset to content view
+    if (successEl) successEl.style.display = 'none';
+    if (contentEl) contentEl.style.display = '';
+  }
+
+  checkoutBtn?.addEventListener('click', openCheckout);
+  closeBtn?.addEventListener('click', closeCheckout);
+  overlay?.addEventListener('click', closeCheckout);
+  successClose?.addEventListener('click', () => {
+    closeCheckout();
     cart = [];
     renderCart();
   });
-});
+
+  // Payment tabs
+  $$('.ptab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.ptab').forEach(t => t.classList.remove('active'));
+      $$('.payment-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      $(tab.dataset.target)?.classList.add('active');
+    });
+  });
+
+  // Credit card form
+  initCreditCardForm();
+  // PayPal flow
+  initPayPalFlow();
+}
+
+function renderCheckoutSummary() {
+  const itemsEl = $('checkout-items');
+  const subtotal = cart.reduce((s, i) => s + i.qty * i.price, 0);
+  const tps = subtotal * 0.05;
+  const tvq = subtotal * 0.09975;
+  const total = subtotal + tps + tvq;
+
+  if (itemsEl) {
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="checkout-item">
+        <span class="checkout-item-name">${item.name}</span>
+        <span class="checkout-item-qty">x${item.qty}</span>
+        <span class="checkout-item-price">${formatPrice(item.qty * item.price)}</span>
+      </div>
+    `).join('');
+  }
+
+  $('co-subtotal').textContent = formatPrice(subtotal);
+  $('co-tps').textContent = formatPrice(tps);
+  $('co-tvq').textContent = formatPrice(tvq);
+  $('co-total').textContent = formatPrice(total);
+  $('cc-pay-amount').textContent = formatPrice(total);
+}
+
+function showPaymentSuccess() {
+  const successEl = $('payment-success');
+  const contentEl = $('checkout-content');
+  const orderNum = 'TC-' + Date.now().toString(36).toUpperCase();
+
+  if (contentEl) contentEl.style.display = 'none';
+  if (successEl) {
+    successEl.style.display = '';
+    successEl.querySelector('.success-order-num').textContent =
+      (lang === 'fr' ? 'Commande #' : 'Order #') + orderNum;
+  }
+}
+
+// ══════════════════════════════════
+// CREDIT CARD FORM
+// ══════════════════════════════════
+function initCreditCardForm() {
+  const form = $('cc-form');
+  if (!form) return;
+
+  const nameIn = $('cc-name');
+  const numIn = $('cc-number');
+  const expIn = $('cc-expiry');
+  const cvvIn = $('cc-cvv');
+  const emailIn = $('cc-email');
+  const cardInner = $('card-visual-inner');
+
+  // Format card number with spaces
+  numIn?.addEventListener('input', () => {
+    let v = numIn.value.replace(/\D/g, '').substring(0, 16);
+    numIn.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+    $('cv-number').textContent = v ? v.replace(/(\d{4})(?=\d)/g, '$1 ').padEnd(19, '•') : '•••• •••• •••• ••••';
+    detectCardType(v);
+  });
+
+  // Format expiry MM / YY
+  expIn?.addEventListener('input', () => {
+    let v = expIn.value.replace(/\D/g, '').substring(0, 4);
+    if (v.length >= 3) v = v.substring(0, 2) + ' / ' + v.substring(2);
+    expIn.value = v;
+    $('cv-expiry').textContent = v || 'MM/AA';
+  });
+
+  // CVV – flip card
+  cvvIn?.addEventListener('focus', () => cardInner?.classList.add('flipped'));
+  cvvIn?.addEventListener('blur', () => cardInner?.classList.remove('flipped'));
+  cvvIn?.addEventListener('input', () => {
+    cvvIn.value = cvvIn.value.replace(/\D/g, '').substring(0, 4);
+    $('cv-cvv').textContent = cvvIn.value || '•••';
+  });
+
+  // Name
+  nameIn?.addEventListener('input', () => {
+    $('cv-name').textContent = nameIn.value.toUpperCase() || 'JEAN TREMBLAY';
+  });
+
+  // Submit
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!validateCCForm()) return;
+
+    const btn = $('cc-pay-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (lang === 'fr' ? 'Traitement...' : 'Processing...');
+
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = `<i class="fas fa-lock"></i> <span>${lang === 'fr' ? 'Payer maintenant' : 'Pay Now'}</span> <span>${$('co-total').textContent}</span>`;
+      showPaymentSuccess();
+    }, 2000);
+  });
+}
+
+function detectCardType(num) {
+  const typeEl = $('cc-card-type');
+  const brandEl = $('cv-brand');
+  let icon = 'far fa-credit-card';
+  let brand = '<i class="far fa-credit-card fa-2x"></i>';
+
+  if (/^4/.test(num)) { icon = 'fab fa-cc-visa'; brand = '<i class="fab fa-cc-visa fa-2x"></i>'; }
+  else if (/^5[1-5]/.test(num)) { icon = 'fab fa-cc-mastercard'; brand = '<i class="fab fa-cc-mastercard fa-2x"></i>'; }
+  else if (/^3[47]/.test(num)) { icon = 'fab fa-cc-amex'; brand = '<i class="fab fa-cc-amex fa-2x"></i>'; }
+
+  if (typeEl) typeEl.innerHTML = `<i class="${icon}"></i>`;
+  if (brandEl) brandEl.innerHTML = brand;
+}
+
+function validateCCForm() {
+  let valid = true;
+  const name = $('cc-name').value.trim();
+  const num = $('cc-number').value.replace(/\s/g, '');
+  const exp = $('cc-expiry').value.replace(/\s/g, '');
+  const cvv = $('cc-cvv').value;
+  const email = $('cc-email').value.trim();
+
+  // Reset errors
+  $$('.cc-error').forEach(e => e.textContent = '');
+
+  if (name.length < 2) {
+    $('err-name').textContent = lang === 'fr' ? 'Nom requis' : 'Name required';
+    valid = false;
+  }
+  if (!/^\d{13,19}$/.test(num)) {
+    $('err-number').textContent = lang === 'fr' ? 'Numéro invalide' : 'Invalid number';
+    valid = false;
+  }
+  if (!/^\d{2}\/\d{2}$/.test(exp)) {
+    $('err-expiry').textContent = lang === 'fr' ? 'Format MM/AA' : 'Format MM/YY';
+    valid = false;
+  } else {
+    const [m, y] = exp.split('/').map(Number);
+    const now = new Date();
+    const expDate = new Date(2000 + y, m);
+    if (m < 1 || m > 12 || expDate < now) {
+      $('err-expiry').textContent = lang === 'fr' ? 'Date expirée' : 'Expired date';
+      valid = false;
+    }
+  }
+  if (!/^\d{3,4}$/.test(cvv)) {
+    $('err-cvv').textContent = lang === 'fr' ? 'CVV invalide' : 'Invalid CVV';
+    valid = false;
+  }
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    $('err-email').textContent = lang === 'fr' ? 'Courriel invalide' : 'Invalid email';
+    valid = false;
+  }
+  return valid;
+}
+
+// ══════════════════════════════════
+// PAYPAL FLOW (SIMULATION)
+// ══════════════════════════════════
+function initPayPalFlow() {
+  const ppBtn = $('paypal-btn');
+  const ppOverlay = $('pp-popup-overlay');
+  const ppClose = $('pp-popup-close');
+  const ppLogin = $('pp-login-btn');
+  const ppConfirm = $('pp-confirm-btn');
+  const ppCancel = $('pp-cancel-btn');
+
+  function showStep(id) {
+    $$('.pp-step').forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+    const step = $(id);
+    if (step) { step.style.display = 'block'; step.classList.add('active'); }
+  }
+
+  function openPP() {
+    ppOverlay.style.display = '';
+    showStep('pp-step-login');
+    $('pp-confirm-amount').textContent = $('co-total').textContent;
+  }
+
+  function closePP() {
+    ppOverlay.style.display = 'none';
+    showStep('pp-step-login');
+    $('pp-email').value = '';
+    $('pp-pass').value = '';
+  }
+
+  ppBtn?.addEventListener('click', openPP);
+  ppClose?.addEventListener('click', closePP);
+  ppCancel?.addEventListener('click', closePP);
+
+  ppLogin?.addEventListener('click', () => {
+    if (!$('pp-email').value || !$('pp-pass').value) return;
+    showStep('pp-step-confirm');
+  });
+
+  ppConfirm?.addEventListener('click', () => {
+    showStep('pp-step-processing');
+    setTimeout(() => {
+      closePP();
+      showPaymentSuccess();
+    }, 2500);
+  });
+}
 
 // ══════════════════════════════════
 // LANGUAGE TOGGLE
@@ -370,6 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initActiveNav();
   initCursorGlow();
+  initCheckout();
 
   // Initial cart render
   renderCart();
