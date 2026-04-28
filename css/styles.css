@@ -912,9 +912,21 @@ p { line-height: 1.8; opacity: 0.85; margin-bottom: 1rem; }
   transition: var(--transition);
 }
 .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
-.team-img { position: relative; height: 260px; overflow: hidden; }
-.team-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: grayscale(20%); }
+.team-img { position: relative; height: 300px; overflow: hidden; }
+.team-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease; filter: grayscale(10%); }
 .team-card:hover .team-img img { transform: scale(1.05); filter: grayscale(0); }
+.team-fallback {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.team-fallback span {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem; font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
 .team-social {
   position: absolute; inset: 0;
   background: rgba(0,0,0,0.5);
